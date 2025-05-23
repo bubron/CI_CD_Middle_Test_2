@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from .models import Category, Image
 from django.utils import timezone
+from datetime import date
 
 class CategoryModelTest(TestCase):
     def test_category_creation(self):
@@ -33,4 +34,4 @@ class ImageModelTest(TestCase):
         self.assertEqual(Image.objects.count(), 1)
         self.assertEqual(self.image.categories.count(), 2)
         self.assertEqual(self.image.age_limit, 12)
-        self.assertTrue(isinstance(self.image.created_date, timezone.datetime.date))
+        self.assertTrue(isinstance(self.image.created_date, date)) 
