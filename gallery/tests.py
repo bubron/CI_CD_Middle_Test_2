@@ -27,3 +27,10 @@ class ImageModelTest(TestCase):
             age_limit=12
         )
         self.image.categories.add(self.category1, self.category2)
+
+    def test_image_creation(self):
+        self.assertEqual(str(self.image), "Тестове зображення")
+        self.assertEqual(Image.objects.count(), 1)
+        self.assertEqual(self.image.categories.count(), 2)
+        self.assertEqual(self.image.age_limit, 12)
+        self.assertTrue(isinstance(self.image.created_date, timezone.datetime.date))
